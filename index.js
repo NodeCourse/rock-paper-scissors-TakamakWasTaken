@@ -75,7 +75,9 @@ function whoWin(choiceBot, choicePlayer){
             whoWins = 1;
         }
         else if(choiceBot == "rock"){
+
             whoWins = -1;
+
         }
     }
 
