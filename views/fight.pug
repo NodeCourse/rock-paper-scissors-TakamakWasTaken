@@ -4,10 +4,22 @@ html
         link(rel="stylesheet", href="/css/styles.css")
     body
         main
-            if(skill == "paper")
-                p tu as choisis papier!
-            else if (skill == "rock")
-                p tu as choisis caillou!!
-            else if (skill == "scissors")
-                p tu as choisis ciseaux!!!
+            div
+                if(skill == "paper")
+                    p= "tu as choisi " + skill
+                else if (skill == "rock")
+                    p= "tu as choisi " + skill
+                else if (skill == "scissors")
+                    p= "tu as choisi " + skill
+
+            div Score:
+                if(doesUserWin == 0)
+                    p Égalité, dommage!
+                else if(doesUserWin == -1)
+                    p Trop nul t'as perdu xD
+                else if(doesUserWin == 1)
+                    p Coup de bol, t'as gagné >:(
+                else
+                    p SOON tm
+
             a(href="/").link-class Play again!

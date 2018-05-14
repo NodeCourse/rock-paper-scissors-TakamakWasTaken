@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const app = express();
 let randomItem = require('random-item');
 const allSkills = ["paper", "rock", "scissors"];
-let userWin;
 
 // Use Pug to render views
 app.set('view engine', 'pug');
@@ -24,22 +23,22 @@ app.get('/', (req, res) => {
     res.render('homepage');
 });
 
-// Render the signup page
+// Render the fight page
 app.get('/fight/:skill', (req, res) => {
-    // See above comment about render
-    const skillUser = {skill:req.params.skill};
 
+    const skillUser = {skill:req.params.skill};
+    let doesUserWin;
     let skillBot = randomItem(allSkills);
 
     if(skillUser == skillBot){
-        userWin = 0;
+        doesUserWin = 0;
     }
     else
     {
-        userWin = whoWin(skillBot, skillUser);
+        doesUserWin = whoWin(skillBot, skillUser);
     }
 
-    res.render('fight', skillUser, userWin, skillBot);
+    res.render('fight', skillUser); //{skillBot: skillBot, doesUserWins: doesUserWin}
 });
 
 // Add a route to handle signup form submission
@@ -75,9 +74,7 @@ function whoWin(choiceBot, choicePlayer){
             whoWins = 1;
         }
         else if(choiceBot == "rock"){
-
             whoWins = -1;
-
         }
     }
 
