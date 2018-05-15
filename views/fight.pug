@@ -1,0 +1,36 @@
+html
+    head
+        title Signup on my awesome website!
+        link(rel="stylesheet", href="/css/styles.css")
+    body
+        main
+            div
+                div
+                    if(skillUser == "paper")
+                        p= "tu as choisi " + skillUser
+                    else if (skillUser == "rock")
+                        p= "tu as choisi " + skillUser
+                    else if (skillUser == "scissors")
+                        p= "tu as choisi " + skillUser
+                    img(src=skillUser + ".png")
+
+                div
+                    if(skillBot == "paper")
+                        p= "le bot as choisi " + skillBot
+                    else if (skillBot == "rock")
+                        p= "le bot as choisi " + skillBot
+                    else if (skillBot == "scissors")
+                        p= "le bot as choisi " + skillBot
+                    img(src=skillBot + ".png")
+
+            div Score:
+                if(doesUserWin == 0)
+                    p Égalité, dommage!
+                else if(doesUserWin == -1)
+                    p Trop nul t'as perdu xD
+                else if(doesUserWin == 1)
+                    p Coup de bol, t'as gagné >:(
+                else
+                    p SOON tm
+
+            a(href="/").link-class Play again!
