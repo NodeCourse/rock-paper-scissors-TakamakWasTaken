@@ -7,7 +7,7 @@ const allSkills = ["paper", "rock", "scissors"];
 // Use Pug to render views
 app.set('view engine', 'pug');
 
-// Serve assets from the public folder
+// Serve assets from the public folder --> public devient la racine, le /
 app.use(express.static('public'));
 
 // Decode form data
@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 // Render the fight page
 app.get('/fight/:skill', (req, res) => {
 
-    const skillUser = {skill:req.params.skill};
+    const skillUser = req.params.skill;
     let doesUserWin;
     let skillBot = randomItem(allSkills);
 
@@ -38,7 +38,7 @@ app.get('/fight/:skill', (req, res) => {
         doesUserWin = whoWin(skillBot, skillUser);
     }
 
-    res.render('fight', skillUser); //{skillBot: skillBot, doesUserWins: doesUserWin}
+    res.render('fight', {doesUserWin, skillUser, skillBot}); // {skillUser: skillUser}
 });
 
 // Add a route to handle signup form submission
@@ -49,7 +49,9 @@ app.post('/signup', (req, res) => {
     // res.redirect(path)
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+    console.log('Listening on port 3000');
+});
 
 function whoWin(choiceBot, choicePlayer){
     let whoWins;
